@@ -1,0 +1,26 @@
+<!--pages/home/home.wxml-->
+<view class="home">
+    <!-- 吸顶 -->
+    <view class="home-tab-control" hidden="{{!showTabControl}}">
+        <w-tab-control titles="{{titles}}" bind:tabclick="handletabclick"
+                    class="fixed"/>
+    </view>
+    <scroll-view class="content"
+                    scroll-y
+                    scroll-with-animation="true">        
+        <!-- 1.轮播图 -->
+        <w-swiper images="{{banners}}"/>
+        <!-- 2.推荐 -->
+        <w-recommend recommends="{{recommends}}" bind:imageLoad="handleImageLoad"/>
+        <!-- 3.本周流行 -->
+        <w-feature/>
+        <!-- 4.导航条 -->
+        <w-tab-control titles="{{titles}}" bind:tabclick="handletabclick"
+                        id="tab-control"/>
+        <!-- 5.商品列表 -->
+        <w-goods goodsList="{{goods[currentType].list}}"/>
+        <!-- 6.回到顶部 -->
+        <!-- hidden对自定义组件是无效的 -->
+        <w-back-top wx:if="{{showBackTop}}"/>
+    </scroll-view>
+</view>
